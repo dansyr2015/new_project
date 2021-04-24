@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Offer;
 use Illuminate\Support\Facades\validator;
+use Illuminate\Support\Facades\App;
+use App\Http\Requests\OfferRequest;
+
 
 class CrudController extends Controller
 {
@@ -16,7 +19,9 @@ class CrudController extends Controller
 
     public function getoffers()
     {
-        return Offer::select('id','name')->get();
+        $lang = app()->getLocale();
+
+        return Offer::select('id','price','details_'.$lang.' as details ','name_'.$lang.' as name ')->get();
     }
 
     /*
@@ -34,15 +39,18 @@ class CrudController extends Controller
          return view('offers.create');
     }
 
-
-    public function store(Request $req)
+    
+    public function getAllOffers()
     {
+        $lang = app()->getLocale();
+        $Offers=Offer::select('id','price','details_'.$lang.' as details','name_'.$lang.' as name')->get();
+        //return $Offers;
+        return view('offers.all',compact('Offers'));
+    }
 
-       
-        
-
-      
-
+    public function store(OfferRequest $req)
+    {
+/*
         $rules=[
             'name'=>'required|max:20',
             'price'=>'required',
@@ -59,24 +67,26 @@ class CrudController extends Controller
 
 
         }
-
+*/
         Offer::create([
-            'name'=>$req->name,
+            'name_ar'=>$req->name_ar,
+            'name_en'=>$req->name_en,
             'price'=>$req->price,
-            'details'=>$req->details
+            'details_ar'=>$req->details_ar,
+            'details_en'=>$req->details_en
          ]);
 
          //return 'saved done'; success
          return redirect()->back()->with(['success'=>'تمت الاضافة بنجاح']);
     }
-
+/*
     protected function getErrors(){
         return [
             'name.required'=>__('msgs.offer_name_req'),
             'name.max'=>'طول الاسم يجب ان يكون اقل من 20 حرف',
         ];
     }
-
+*/
     public function __construct()
     {
 

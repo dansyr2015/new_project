@@ -17,9 +17,22 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="name">name :</label>
-                    <input type="text" class="form-control" placeholder="Enter name" id="name" name="name">
-                @error('name')
+                    <label for="name_ar">name ar:</label>
+                    <input type="text" class="form-control" placeholder="Enter name" id="name_ar" name="name_ar">
+                @error('name_ar')
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Danger!</strong> {{$message}}
+                            </div>
+                @enderror
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="name_en">name en:</label>
+                    <input type="text" class="form-control" placeholder="Enter name" id="name_en" name="name_en">
+                @error('name_en')
                             <div class="alert alert-danger alert-dismissible fade show">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 <strong>Danger!</strong> {{$message}}
@@ -42,10 +55,24 @@
                 </div>
                
                 <div class="form-group">
-                    <label for="details">details:</label>
-                    <input type="text" class="form-control" placeholder="Enter details" id="details" name="details" >
+                    <label for="details_ar">details ar:</label>
+                    <input type="text" class="form-control" placeholder="Enter details" id="details_ar" name="details_ar" >
                 
-                    @error('details')
+                    @error('details_ar')
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Danger!</strong> {{$message}}
+                            </div>
+                @enderror
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="details_en">details en:</label>
+                    <input type="text" class="form-control" placeholder="Enter details" id="details_en" name="details_en" >
+                
+                    @error('details_en')
                             <div class="alert alert-danger alert-dismissible fade show">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 <strong>Danger!</strong> {{$message}}

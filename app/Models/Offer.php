@@ -10,7 +10,7 @@ class Offer extends Model
     use HasFactory;
 
     protected $table="offers";
-    protected $fillable=['name','price','details','created_at','updated_at'];
+    protected $fillable=['name_ar','price','details_ar','name_en','details_en','created_at','updated_at'];
     protected $hidden=['created_at','updated_at'];
 public $timestamps=false;
 
